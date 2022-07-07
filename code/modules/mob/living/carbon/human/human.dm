@@ -1033,6 +1033,9 @@
 /mob/living/carbon/human/species/felinid
 	race = /datum/species/human/felinid
 
+/mob/living/carbon/human/species/kitsune
+	race = /datum/species/human/kitsune
+
 /mob/living/carbon/human/species/fly
 	race = /datum/species/fly
 

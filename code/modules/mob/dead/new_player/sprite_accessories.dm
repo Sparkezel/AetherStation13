@@ -1704,6 +1704,30 @@
 	icon_state = "cat"
 	color_src = HAIR
 
+/datum/sprite_accessory/tails/human/fox
+	icon = 'icons/mob/fox.dmi'
+	name = "Fox"
+	icon_state = "fox"
+	color_src = HAIR
+
+/datum/sprite_accessory/tails_animated/human/fox
+	icon = 'icons/mob/fox.dmi'
+	name = "Fox"
+	icon_state = "fox"
+	color_src = HAIR
+
+/datum/sprite_accessory/tails/human/fox/alt
+	icon = 'icons/mob/fox.dmi'
+	name = "Fox 2"
+	icon_state = "fox2"
+	color_src = HAIR
+
+/datum/sprite_accessory/tails_animated/human/fox/alt
+	icon = 'icons/mob/fox.dmi'
+	name = "Fox 2"
+	icon_state = "fox2"
+	color_src = HAIR
+
 /datum/sprite_accessory/tails/monkey/default
 	name = "Monkey"
 	icon_state = "monkey"
@@ -1768,6 +1792,13 @@
 /datum/sprite_accessory/ears/cat
 	name = "Cat"
 	icon_state = "cat"
+	hasinner = 1
+	color_src = HAIR
+
+/datum/sprite_accessory/ears/fox
+	icon = 'icons/mob/fox.dmi'
+	name = "Fox"
+	icon_state = "fox"
 	hasinner = 1
 	color_src = HAIR
 
