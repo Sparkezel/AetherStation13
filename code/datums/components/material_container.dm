@@ -112,7 +112,7 @@
 	SIGNAL_HANDLER
 
 	var/list/tc = allowed_item_typecache
-	if(!(mat_container_flags & MATCONTAINER_ANY_INTENT) && user.combat_mode)
+	if(!(mat_container_flags & MATCONTAINER_ANY_INTENT) && user.istate.harm)
 		return
 	if(I.item_flags & ABSTRACT)
 		return
@@ -344,6 +344,8 @@
 
 	for(var/x in mats) //Loop through all required materials
 		var/datum/material/req_mat = x
+		if (!mats[x]) // Not asking for anything.
+			continue
 		if(!istype(req_mat))
 			if(ispath(req_mat)) //Is this an actual material, or is it a category?
 				req_mat = GET_MATERIAL_REF(req_mat) //Get the ref

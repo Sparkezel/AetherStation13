@@ -54,6 +54,9 @@
 		forge_traitor_objectives()
 		forge_ending_objective()
 
+	if (should_give_codewords)
+		give_codewords()
+
 	var/faction = prob(75) ? FACTION_SYNDICATE : FACTION_NANOTRASEN
 
 	pick_employer(faction)
@@ -107,7 +110,7 @@
 	// for(in...to) loops iterate inclusively, so to reach objective_limit we need to loop to objective_limit - 1
 	// This does not give them 1 fewer objectives than intended.
 	for(var/i in objective_count to objective_limit - 1)
-		objectives += forge_single_generic_objective()
+		forge_single_generic_objective()
 
 
 /**

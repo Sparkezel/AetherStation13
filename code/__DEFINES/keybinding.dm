@@ -37,15 +37,19 @@
 #define COMSIG_KB_HUMAN_QUICKEQUIPBELT_DOWN "keybinding_human_quickequipbelt_down"
 #define COMSIG_KB_HUMAN_BAGEQUIP_DOWN "keybinding_human_bagequip_down"
 #define COMSIG_KB_HUMAN_SUITEQUIP_DOWN "keybinding_human_suitequip_down"
+#define COMSIG_KB_HUMAN_RPOCKETEQUIP_DOWN "keybinding_human_rpocketquip_down"
+#define COMSIG_KB_HUMAN_LPOCKETEQUIP_DOWN "keybinding_human_lpocketequip_down"
 
 //Living
 #define COMSIG_KB_LIVING_RESIST_DOWN "keybinding_living_resist_down"
 #define COMSIG_KB_LIVING_LOOKUP_DOWN "keybinding_living_lookup_down"
 #define COMSIG_KB_LIVING_LOOKDOWN_DOWN "keybinding_living_lookdown_down"
 #define COMSIG_KB_LIVING_REST_DOWN "keybinding_living_rest_down"
-#define COMSIG_KB_LIVING_TOGGLE_COMBAT_DOWN "keybinding_living_toggle_combat_down"
-#define COMSIG_KB_LIVING_ENABLE_COMBAT_DOWN "keybinding_living_enable_combat_down"
-#define COMSIG_KB_LIVING_DISABLE_COMBAT_DOWN "keybinding_living_disable_combat_down"
+#define COMSIG_KB_LIVING_INTERACT_ACTION_1 "keybinding_living_interact_1"
+#define COMSIG_KB_LIVING_INTERACT_ACTION_2 "keybinding_living_interact_2"
+#define COMSIG_KB_LIVING_INTERACT_ACTION_3 "keybinding_living_interact_3"
+#define COMSIG_KB_LIVING_INTERACT_ACTION_4 "keybinding_living_interact_4"
+#define COMSIG_KB_LIVING_INTERACT_ACTION_5 "keybinding_living_interact_5"
 
 //Mob
 #define COMSIG_KB_MOB_FACENORTH_DOWN "keybinding_mob_facenorth_down"

@@ -12,7 +12,7 @@
 	. = ..()
 	if (!map_path)
 		return qdel(src) && stack_trace("MISSING MAP PATH!")
-	template = new(path = map_path)
+	template = new(path = map_path, cache = TRUE)
 
 /datum/deathmatch_map/proc/map_equip(mob/living/carbon/human/player)
 	SHOULD_CALL_PARENT(TRUE)
@@ -55,8 +55,8 @@
 	min_players = 2
 	max_players = 5
 	allowed_loadouts = list(
-		/datum/deathmatch_loadout/gunperative,
-		/datum/deathmatch_loadout/meleeperative
+		/datum/deathmatch_loadout/operative/ranged,
+		/datum/deathmatch_loadout/operative/melee
 	)
 	map_path = "_maps/map_files/DM/shooting_range.dmm"
 
@@ -75,3 +75,11 @@
 	max_players = 8
 	allowed_loadouts = list(/datum/deathmatch_loadout/instagib)
 	map_path = "_maps/map_files/DM/instagib.dmm"
+
+/datum/deathmatch_map/mech_madness
+	name = "Mech Madness"
+	desc = "Write Me"
+	min_players = 2
+	max_players = 4
+	allowed_loadouts = list(/datum/deathmatch_loadout/operative)
+	map_path = "_maps/map_files/DM/mech_madness.dmm"

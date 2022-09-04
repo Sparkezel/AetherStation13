@@ -247,7 +247,7 @@
 			var/datum/stack_recipe/recipe = locate(params["ref"])
 			if(!is_valid_recipe(recipe, recipes)) //href exploit protection
 				return
-			var/multiplier = text2num(params["multiplier"])
+			var/multiplier = round(text2num(params["multiplier"]))
 			if(!multiplier || (multiplier <= 0)) //href exploit protection
 				return
 			if(!building_checks(recipe, multiplier))
@@ -455,7 +455,7 @@
 	. = ..()
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
-/obj/item/stack/attack_hand(mob/user, list/modifiers)
+/obj/item/stack/attack_hand(mob/user)
 	if(user.get_inactive_held_item() == src)
 		if(zero_amount())
 			return

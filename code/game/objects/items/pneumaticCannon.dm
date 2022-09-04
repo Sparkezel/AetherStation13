@@ -71,7 +71,7 @@
 	. += out.Join("\n")
 
 /obj/item/pneumatic_cannon/attackby(obj/item/W, mob/living/user, params)
-	if(user.combat_mode)
+	if(user.istate.harm)
 		return ..()
 	if(istype(W, /obj/item/tank/internals))
 		if(!tank)
@@ -136,7 +136,7 @@
 
 /obj/item/pneumatic_cannon/afterattack(atom/target, mob/living/user, flag, params)
 	. = ..()
-	if(flag && user.combat_mode)//melee attack
+	if(flag && user.istate.harm)//melee attack
 		return
 	if(!istype(user))
 		return
@@ -300,6 +300,11 @@
 	selfcharge = TRUE
 	charge_type = /obj/item/food/pie/cream
 	maxWeightClass = 60 //20 pies.
+
+/obj/item/pneumatic_cannon/pie/selfcharge/compact
+	name = "honkinator-4 compact pie cannon"
+	desc = "A compact, self-loading pie cannon for tactical pranking action."
+	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/pneumatic_cannon/pie/selfcharge/cyborg
 	name = "low velocity pie cannon"

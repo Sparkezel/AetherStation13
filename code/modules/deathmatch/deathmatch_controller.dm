@@ -46,6 +46,7 @@ GLOBAL_VAR(deathmatch_game)
 
 /datum/deathmatch_controller/proc/create_new_lobby(mob/host)
 	lobbies[host.ckey] = new /datum/deathmatch_lobby(host)
+	deadchat_broadcast(" has opened a new deathmatch lobby. <a href=?src=[REF(lobbies[host.ckey])];join=1>(Join)</a>", "<B>[host]</B>")
 
 /datum/deathmatch_controller/proc/remove_lobby(ckey)
 	var/lobby = lobbies[ckey]
@@ -88,6 +89,9 @@ GLOBAL_VAR(deathmatch_game)
 	return spawns
 
 /datum/deathmatch_controller/proc/clear_location(datum/deathmatch_map_loc/location)
+	// lets give the game a moment to do whatever it needs to before we delete.
+	set waitfor = FALSE
+	sleep(world.tick_lag)
 	// Clear area between bottom and top corners
 	map_remover.defineRegion(locate(location.x1, location.y1, location.z), locate(location.x2, location.y2, location.z), TRUE)
 	map_remover.generate()

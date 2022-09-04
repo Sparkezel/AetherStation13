@@ -36,12 +36,17 @@
 	var/ratingdesc = TRUE
 	///If it's a grown that acts as a battery, add a wire overlay to it.
 	var/grown_battery = FALSE
+	/// Whether or not this cell should self recharge.
+	var/self_recharge = FALSE
+	/// Whether or not this cell should have a charge overlay.
+	var/has_overlay = TRUE
 
 /obj/item/stock_parts/cell/get_cell()
 	return src
 
 /obj/item/stock_parts/cell/Initialize(mapload, override_maxcharge)
 	. = ..()
+	START_PROCESSING(SSobj, src)
 	create_reagents(5, INJECTABLE | DRAINABLE)
 	if (override_maxcharge)
 		maxcharge = override_maxcharge
@@ -61,11 +66,32 @@
 	UnregisterSignal(reagents, list(COMSIG_REAGENTS_NEW_REAGENT, COMSIG_REAGENTS_ADD_REAGENT, COMSIG_REAGENTS_DEL_REAGENT, COMSIG_REAGENTS_REM_REAGENT, COMSIG_PARENT_QDELETING))
 	return NONE
 
+/obj/item/stock_parts/cell/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	return ..()
+
+/obj/item/stock_parts/cell/vv_edit_var(var_name, var_value)
+	switch(var_name)
+		if(NAMEOF(src, self_recharge))
+			if(var_value)
+				START_PROCESSING(SSobj, src)
+			else
+				STOP_PROCESSING(SSobj, src)
+	. = ..()
+
+/obj/item/stock_parts/cell/process(delta_time)
+	if(self_recharge)
+		give(chargerate * 0.125 * delta_time)
+	else
+		return PROCESS_KILL
+
 /obj/item/stock_parts/cell/update_overlays()
 	. = ..()
+	if (!has_overlay)
+		return
 	if(grown_battery)
 		. += mutable_appearance('icons/obj/power.dmi', "grown_wires")
-	if(charge < 0.01)
+	if (charge < 0.01)
 		return
 	. += mutable_appearance('icons/obj/power.dmi', "cell-o[((charge / maxcharge) >= 0.995) ? 2 : 1]")
 
@@ -418,6 +444,19 @@
 /obj/item/stock_parts/cell/crystal_cell/Initialize()
 	. = ..()
 	charge = 50000
+
+/obj/item/stock_parts/cell/high/slime
+	name = "charged slime core"
+	desc = "A yellow slime core infused with plasma, it crackles with power."
+	icon = 'icons/mob/slimes.dmi'
+	icon_state = "yellow slime extract"
+	custom_materials = null
+	rating = 5 //self-recharge makes these desirable
+	self_recharge = TRUE // Infused slime cores self-recharge, over time
+	has_overlay = FALSE
+
+/*Hypercharged slime cell - located in /code/modules/research/xenobiology/crossbreeding/_misc.dm
+/obj/item/stock_parts/cell/high/slime/hypercharged */
 
 /obj/item/stock_parts/cell/inducer_supply
 	maxcharge = 5000

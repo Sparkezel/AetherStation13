@@ -24,6 +24,19 @@
 	id = "viral_nanites"
 	program_type = /datum/nanite_program/viral
 	category = list("Utility Nanites")
+/datum/design/nanites/research
+	name = "Distributed Computing"
+	desc = "The nanites aid the research servers by performing a portion of its calculations, increasing research point generation."
+	id = "research_nanites"
+	program_type = /datum/nanite_program/research
+	category = list("Utility Nanites")
+
+/datum/design/nanites/researchplus
+	name = "Neural Network"
+	desc = "The nanites link the host's brains together forming a neural research network, that becomes more efficient with the amount of total hosts. Can be overloaded to increase research output."
+	id = "researchplus_nanites"
+	program_type = /datum/nanite_program/researchplus
+	category = list("Utility Nanites")
 
 /datum/design/nanites/monitoring
 	name = "Monitoring"
@@ -106,7 +119,7 @@
 
 /datum/design/nanites/nanite_sting
 	name = "Nanite Sting"
-	desc = "When triggered, projects a nearly invisible spike of nanites that attempts to infect a nearby non-host with a copy of the host's nanites cluster."
+	desc = "When triggered, projects a nearly invisible spike of nanites that attempts to infect a nearby non-host with a copy of the designated cloud ID."
 	id = "nanite_sting_nanites"
 	program_type = /datum/nanite_program/nanite_sting
 	category = list("Utility Nanites")
@@ -197,7 +210,7 @@
 
 /datum/design/nanites/nervous
 	name = "Nerve Support"
-	desc = "The nanites act as a secondary nervous system, reducing the amount of time the host is stunned."
+	desc = "The nanites absorb excess strain on the nervous system, allowing the host to resist incapacitating attacks."
 	id = "nervous_nanites"
 	program_type = /datum/nanite_program/nervous
 	category = list("Augmentation Nanites")
